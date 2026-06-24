@@ -6,7 +6,10 @@ This is the goalsetter app.
 
 Rename the .env-example to .env and add your MONGO_URI
 
-
+NODE_ENV = production
+PORT = 5000
+MONGO_URI = Your MONGO URI
+JWT_SECRET = Your JWT SECRET
 
 ### Install dependencies
 
