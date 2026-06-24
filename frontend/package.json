@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "proxy": "https://goal-setter-mern-app-60cz.onrender.com/",
+  "proxy": "https://goal-setter-mern-app-xbdr.onrender.com/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.2",
