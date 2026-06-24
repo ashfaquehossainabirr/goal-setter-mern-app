@@ -1,0 +1,501 @@
+/* ===============================
+   Global Reset & Variables
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --bg-light: #f8fafc;
+  --text-dark: #1f2937;
+  --text-muted: #6b7280;
+  --white: #ffffff;
+  --border: #e5e7eb;
+  --danger: #ef4444;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  color: var(--text-dark);
+  min-height: 100vh;
+}
+
+/* ===============================
+   Common Utilities
+================================ */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn {
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* ======================
+   HEADER / NAVBAR
+====================== */
+.header {
+  background: var(--bg-light);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Navigation */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links li {
+  list-style: none;
+}
+
+/* Links */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.nav-link:hover {
+  background: var(--bg);
+}
+
+/* Register highlight */
+.nav-link.register {
+  background: var(--primary);
+  color: white;
+}
+
+.nav-link.register:hover {
+  background: var(--primary-dark);
+}
+
+/* Logout button */
+.btn-logout {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+  background: var(--danger);
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .header-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* ===============================
+   Login / Register Layout
+================================ */
+.heading {
+  text-align: center;
+  margin: 3rem auto 1.5rem;
+}
+
+.heading h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.heading p {
+  margin-top: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ===============================
+   Form Card
+================================ */
+.form {
+  max-width: 420px;
+  margin: 0 auto 4rem;
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  animation: fadeUp 0.5s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+  color: #9ca3af;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+}
+
+/* ===============================
+   Spinner Center
+================================ */
+.spinner-container {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===============================
+   LOADING SPINNER
+================================ */
+.loadingSpinnerContainer {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadingSpinner {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 6px solid var(--border);
+  border-top-color: var(--primary);
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===============================
+   Toast Fix (Optional polish)
+================================ */
+.Toastify__toast {
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+/* ===============================
+   Responsive
+================================ */
+@media (max-width: 480px) {
+  .form {
+    margin: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .heading h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ===============================
+   DASHBOARD LAYOUT
+================================ */
+.dashboard {
+  max-width: 1100px;
+  margin: 2.5rem auto;
+  padding: 0 1rem 3rem;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 2rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 15px 30px rgba(79, 70, 229, 0.25);
+}
+
+.dashboard-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.dashboard-header span {
+  color: #fde68a;
+}
+
+.dashboard-header p {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* ===============================
+   ADD GOAL FORM CARD
+================================ */
+.dashboard-form {
+  background: var(--white);
+  padding: 1.8rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.5s ease;
+}
+
+/* ===============================
+   GOALS SECTION
+================================ */
+.dashboard-content {
+  margin-top: 1rem;
+}
+
+/* Goals Grid */
+.goals {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ===============================
+   GOAL CARD
+================================ */
+.goal {
+  background: var(--white);
+  padding: 1.4rem;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.goal:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+}
+
+.goal h2 {
+  font-size: 1.05rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+.goal .date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* Delete Button */
+.goal button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--danger);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.goal button:hover {
+  transform: scale(1.15);
+}
+
+/* ===============================
+   EMPTY STATE
+================================ */
+.empty-state {
+  background: var(--white);
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+  border: 2px dashed var(--border);
+}
+
+.empty-state h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.empty-state p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ===============================
+   RESPONSIVE DASHBOARD
+================================ */
+@media (max-width: 768px) {
+  .dashboard-header {
+    padding: 1.6rem;
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .dashboard-form {
+    padding: 0;
+  }
+
+  section.form {
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 500px) {
+  .dashboard-form {
+    padding: 1.8rem;
+  }
+}
+
+/* ===============================
+   ADD GOAL FORM STYLING
+================================ */
+.dashboard-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Input Field */
+.dashboard-form input[type="text"],
+.dashboard-form textarea {
+  width: 100%;
+  margin-top: 16px;
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+  background: #f9fafb;
+  transition: all 0.3s ease;
+}
+
+.dashboard-form input::placeholder,
+.dashboard-form textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* Focus State */
+.dashboard-form input:focus,
+.dashboard-form textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+}
+
+/* Submit Button */
+.dashboard-form button {
+  padding: 0.9rem;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dashboard-form button:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(
+    135deg,
+    var(--primary),
+    var(--primary-dark)
+  );
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.35);
+}
+
+/* Button Active */
+.dashboard-form button:active {
+  transform: scale(0.98);
+}
